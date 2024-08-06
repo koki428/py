@@ -1,7 +1,9 @@
+#上部に到達したかを判定し、保持率を計算し、result.txtに書き込む
 import numpy as np
 import math
 import sympy as sym
 import matplotlib.pyplot as plt
+import matplotlib
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import R2D2
 import cv2
@@ -9,6 +11,8 @@ import sys
 import os
 import pandas as pd
 from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
+
+matplotlib.use('Agg')
 
 print("input start caseid")
 start_caseid=input()
@@ -109,7 +113,7 @@ for caseid in range(start_caseid,end_caseid+1):
             # cx=centroids[1,1]
             # cy=centroids[1,0]
             # print('cy',cy)
-            if (abs(psi_max-psi_min) < 1.e+1):
+            if (abs(psi_max-psi_min) < 1.e+3):
                 if (n != 0):
                     cy=centroids[1,0]
                     print('cy',cy)
@@ -143,9 +147,10 @@ for caseid in range(start_caseid,end_caseid+1):
         lam=0.40
     elif (int(caseid[-3]) == 2):
         lam=0.45
-    lam=0.05*(int(caseid[-3])-3)
+    else:    
+        lam=0.05*(int(caseid[-3])-3)
     
     with open ('result.txt','a') as f:
-        f.write("{} {} {} {} {}\n".format(caseid,caseid[-2:],lam,achirved_step,retention))
+        f.write("{} {} {:.2f} {} {}\n".format(caseid,caseid[-2:],lam,achirved_step,retention))
     
 
