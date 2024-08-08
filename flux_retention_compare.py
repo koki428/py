@@ -3,10 +3,15 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import matplotlib
+import R2D2
 
 # matplotlib.use('Agg')
 
 plt.close('all')
+
+d=R2D2.R2D2_data("../run/d299/data/")
+for key in d.p:
+    exec('%s=%s%s%s' % (key, 'd.p["',key,'"]'))
 
 #結果が書き込んであるファイルを開く
 results=[]
@@ -52,6 +57,7 @@ for position in range(start_position,end_position+1):
             # print("i = ",i)
 
     #plot
+    rtube = 0.005*rstar
     fig = plt.figure(num=1,figsize=(10,8))
     plt.rcParams['font.size'] = 16
     ax1=fig.add_subplot(1,1,1)
@@ -59,14 +65,19 @@ for position in range(start_position,end_position+1):
     ax1.plot(no_lam,no_retention,linestyle='None',marker='o',color='blue',label='no convection')
     ax1.set_xlabel('λ')
     ax1.set_ylabel('retention [%]')
-    # ax1.set_title('retention vs λ')
+    ax1.set_title('Initial position y = {:.2f} Mm'.format((2*rtube+(ymax-4*rtube)/99*position)*1.e-8))
     ax1.set_xlim(-0.01,0.46)
     ax1.set_ylim(-2,102)
+    ax1.set_xticks(np.arange(0,0.46,0.05))
     for i in range(0,len(retention)):
         plt.text(lam[i],retention[i],retention[i])
         plt.text(no_lam[i],no_retention[i],no_retention[i])
     plt.legend()
+    fig.tight_layout(pad=0.5)
     plt.savefig("../figs/analysis/"+'retention_lambda_'+str(position)+'.png')
+    if (position != end_position):
+        plt.clf()
+    
     
 
     
