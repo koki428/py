@@ -110,13 +110,10 @@ for caseid in range(start_caseid,end_caseid+1):
             else:
                 psi_max=center
             
-            # cx=centroids[1,1]
-            # cy=centroids[1,0]
-            # print('cy',cy)
             if (abs(psi_max-psi_min) < 1.e+3):
                 if (n != 0):
                     cy=centroids[1,0]
-                    print('cy',cy)
+                    # print('cy',cy)
                 break
 
         #上部の到達したか判定
