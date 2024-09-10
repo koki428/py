@@ -334,7 +334,7 @@ def read_qq_select(self,xs,n,silent=False):
     if 'ro' in self.qs:
         memflag = not self.qs['ro'].shape == (jx,kx)
     if 'ro' not in self.qs or memflag:
-        print('memory is newly allocated')
+        # print('memory is newly allocated')
         self.qs["ro"] = np.zeros((jx,kx))
         self.qs["vx"] = np.zeros((jx,kx))
         self.qs["vy"] = np.zeros((jx,kx))
@@ -450,7 +450,7 @@ def read_qq_select_z(self,zs,n,silent=False):
     if 'ro' in self.qz:
         memflag = not self.qz['ro'].shape == (ix,jx)
     if 'ro' not in self.qz or memflag:
-        print('memory is newly allocated')
+        # print('memory is newly allocated')
         self.qz["ro"] = np.zeros((ix,jx))
         self.qz["vx"] = np.zeros((ix,jx))
         self.qz["vy"] = np.zeros((ix,jx))
@@ -556,7 +556,7 @@ def read_qq(self,n,value,silent=False):
         if value in self.qq:
             memflag = not self.qq[value].shape == (ix,jx,kx)
         if  value not in self.qq or memflag:
-            print('memory is newly allocated')
+            # print('memory is newly allocated')
             self.qq[value] = np.zeros((ix,jx,kx),dtype=np.float32)
 
     for ir0 in range(1,self.p["ixr"]+1):
@@ -968,7 +968,7 @@ def read_qq_2d(self,n,silent=False):
     if 'ro' in self.q2:
         memflag = not self.q2['ro'].shape == (ix,jx)
     if 'ro' not in self.q2 or memflag:
-        print('memory is newly allocated')
+        # print('memory is newly allocated')
         self.q2["ro"] = np.zeros((ix,jx))
         self.q2["vx"] = np.zeros((ix,jx))
         self.q2["vy"] = np.zeros((ix,jx))

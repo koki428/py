@@ -50,9 +50,9 @@ for position in range(start_position,end_position+1):
         if (result[1]==str(position).zfill(2)):
             # print(result)
             lam[i]='{:.2f}'.format(float(result[2]))
-            print("lambda = ",lam)
+            # print("lambda = ",lam)
             retention[i]='{:.1f}'.format(float(result[4]))
-            print("retention = ",retention)
+            # print("retention = ",retention)
             i=i+1
             # print("i = ",i)
 
@@ -66,18 +66,14 @@ for position in range(start_position,end_position+1):
     ax1.set_xlabel('λ')
     ax1.set_ylabel('retention [%]')
     ax1.set_title('Initial position y = {:.2f} Mm'.format((2*rtube+(ymax-4*rtube)/99*position)*1.e-8))
-    ax1.set_xlim(-0.01,0.46)
+    ax1.set_xlim(-0.01,0.48)
     ax1.set_ylim(-2,102)
     ax1.set_xticks(np.arange(0,0.46,0.05))
     for i in range(0,len(retention)):
         plt.text(lam[i],retention[i],retention[i])
         plt.text(no_lam[i],no_retention[i],no_retention[i])
-    plt.legend()
+    plt.legend(bbox_to_anchor=(0.27,0.99), borderaxespad=0)
     fig.tight_layout(pad=0.5)
     plt.savefig("../figs/analysis/"+'retention_lambda_'+str(position)+'.png')
     if (position != end_position):
         plt.clf()
-    
-    
-
-    

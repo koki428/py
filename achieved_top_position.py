@@ -12,8 +12,8 @@ for key in d.p:
 
 #結果が書き込んであるファイルを開く
 results=[]
-# with open("result.txt","r") as f:
-with open("test.txt","r") as f:
+with open("result.txt","r") as f:
+# with open("test.txt","r") as f:
     for result in f:
         results.append(result.split())
 lam_np=np.zeros(10)

@@ -49,7 +49,7 @@ for caseid in range(start_caseid,end_caseid+1):
     dy=(ymax-ymin)/jx
     rtube = 0.005*rsun
 
-    roll=int(((ymax+ymin)*0.5-(2*rtube+(ymax-4*rtube)/99*int(caseid[-2:])))/dy)
+    # roll=int(((ymax+ymin)*0.5-(2*rtube+(ymax-4*rtube)/99*int(caseid[-2:])))/dy)
 
     #t=nの計算
     found=False
@@ -63,12 +63,12 @@ for caseid in range(start_caseid,end_caseid+1):
         bz=d.q2['bz']
 
         #平行移動
-        if (n > 1):
-            roll=roll+int((ymax+ymin)*0.5/dy-cy)
+        # if (n > 1):
+        #     roll=roll+int((ymax+ymin)*0.5/dy-cy)
 
-        bx=np.roll(bx,roll,axis=1)
-        by=np.roll(by,roll,axis=1)
-        bz=np.roll(bz,roll,axis=1)
+        # bx=np.roll(bx,roll,axis=1)
+        # by=np.roll(by,roll,axis=1)
+        # bz=np.roll(bz,roll,axis=1)
 
         #t=0での磁束の計算
         if n==0:
@@ -111,8 +111,8 @@ for caseid in range(start_caseid,end_caseid+1):
                 psi_max=center
             
             if (abs(psi_max-psi_min) < 1.e+3):
-                if (n != 0):
-                    cy=centroids[1,0]
+                # if (n != 0):
+                #     cy=centroids[1,0]
                     # print('cy',cy)
                 break
 
@@ -147,8 +147,7 @@ for caseid in range(start_caseid,end_caseid+1):
     else:    
         lam=0.05*(int(caseid[-3])-3)
     
-    # with open ('result.txt','a') as f:
-    with open ('result_add.txt','a') as f:
+    with open ('no_convection.txt','a') as f:
         f.write("{} {} {:.2f} {} {}\n".format(caseid,caseid[-2:],lam,achirved_step,retention))
     
 

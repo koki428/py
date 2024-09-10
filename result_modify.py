@@ -138,7 +138,7 @@ while True:
         for i in range(0,ix):
             for j in range(0,jx):
                 rr[i,j]=np.sqrt((i-cx)**2+(j-cy)**2)
-                if (rr[i,j] > 2.9*r_eff):
+                if (rr[i,j] > 2.1*r_eff):
                     psi[i,j]=0.0
         
         psi_thr=np.zeros((ix,jx))
